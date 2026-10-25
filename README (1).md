@@ -34,8 +34,3 @@ Digital Queue is a smart campus queue management website designed to make studen
 4. Select a campus service.
 5. Click Generate Token.
 
-## Current Status
-
-The frontend demo is working. Tokens are generated in the browser and are not yet saved to a database.
-
-Java backend and MySQL integration will be added by the project team.
