@@ -1,1 +1,1 @@
-# Digital-queue-management-system-
+Java Spring Boot backend for the Digital Queue Management System.

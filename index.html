@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Queue | Smart Campus Services</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="#home" class="logo">
+                <span class="logo-icon">Q</span>
+                <span>Digital Queue</span>
+            </a>
+
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#live-queue">Live Queue</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#services">Our Services</a>
+                <a href="#about">About Us</a>
+            </nav>
+
+            <div class="nav-badge">Smart &amp; Simple</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="eyebrow">SMART CAMPUS SERVICES</div>
+                <h1>Skip the Lines.<span>Save Your Time.</span></h1>
+                <h2>Welcome to Digital Queue</h2>
+                <p class="hero-description">
+                    A smarter way to access campus services. Generate your token,
+                    reduce unnecessary waiting, and make every campus visit simpler.
+                </p>
+
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">&#9889;</span>
+                        <strong>Fast</strong>
+                        <p>Quick and simple</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">&#9671;</span>
+                        <strong>Easy</strong>
+                        <p>Student-friendly</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">&#9711;</span>
+                        <strong>Convenient</strong>
+                        <p>Organised queues</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="queue-card" id="token-form-card">
+                <div class="card-heading">
+                    <h2>Get Your Token</h2>
+                    <p>Enter your details to request a campus service token.</p>
+                </div>
+
+                <form id="queueForm">
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input
+                            type="text"
+                            id="studentName"
+                            name="studentName"
+                            placeholder="Enter your full name"
+                            maxlength="60"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Choose a service</option>
+                            <option value="College Office">College Office</option>
+                            <option value="Library">Library</option>
+                            <option value="Accounts Section">Accounts Section</option>
+                            <option value="Department Office">Department Office</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="generate-button">
+                        Generate Token &nbsp; &#8594;
+                    </button>
+
+                    <p class="helper-text">
+                        Simple, convenient and student-friendly.
+                    </p>
+                </form>
+
+                <div class="token-result" id="tokenResult" role="status"
+                    aria-live="polite" hidden>
+                    <p class="token-label">YOUR DEMO TOKEN</p>
+                    <div class="token-number" id="tokenNumber"></div>
+                    <p class="token-message" id="tokenMessage"></p>
+                    <p class="demo-note">
+                        Demo only. This token is not registered in a database.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section live-queue-section" id="live-queue">
+            <div class="section-heading">
+                <div class="eyebrow">QUEUE MONITOR</div>
+                <h2>Live Queue Status</h2>
+                <p>Check the sample queue status before visiting a campus service.</p>
+            </div>
+
+            <div class="demo-banner">
+                <span class="status-dot"></span>
+                Demonstration data — not connected to the actual college queue
+            </div>
+
+            <div class="queue-status-grid">
+                <article class="status-card">
+                    <div class="status-card-top">
+                        <span class="status-icon">C</span>
+                        <span class="open-label">Demo status</span>
+                    </div>
+                    <h3>College Office</h3>
+                    <p class="status-description">Now serving</p>
+                    <div class="current-token" id="collegeCurrent">CO104</div>
+                    <div class="status-divider"></div>
+                    <div class="status-details">
+                        <div>
+                            <span>People waiting</span>
+                            <strong id="collegeWaiting">5</strong>
+                        </div>
+                        <div>
+                            <span>Est. wait</span>
+                            <strong id="collegeWait">15 min</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="status-card">
+                    <div class="status-card-top">
+                        <span class="status-icon">L</span>
+                        <span class="open-label">Demo status</span>
+                    </div>
+                    <h3>Library</h3>
+                    <p class="status-description">Now serving</p>
+                    <div class="current-token" id="libraryCurrent">LI052</div>
+                    <div class="status-divider"></div>
+                    <div class="status-details">
+                        <div>
+                            <span>People waiting</span>
+                            <strong id="libraryWaiting">3</strong>
+                        </div>
+                        <div>
+                            <span>Est. wait</span>
+                            <strong id="libraryWait">9 min</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="status-card">
+                    <div class="status-card-top">
+                        <span class="status-icon">A</span>
+                        <span class="open-label">Demo status</span>
+                    </div>
+                    <h3>Accounts Section</h3>
+                    <p class="status-description">Now serving</p>
+                    <div class="current-token" id="accountsCurrent">AC021</div>
+                    <div class="status-divider"></div>
+                    <div class="status-details">
+                        <div>
+                            <span>People waiting</span>
+                            <strong id="accountsWaiting">7</strong>
+                        </div>
+                        <div>
+                            <span>Est. wait</span>
+                            <strong id="accountsWait">21 min</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="status-card">
+                    <div class="status-card-top">
+                        <span class="status-icon">D</span>
+                        <span class="open-label">Demo status</span>
+                    </div>
+                    <h3>Department Office</h3>
+                    <p class="status-description">Now serving</p>
+                    <div class="current-token" id="departmentCurrent">DE013</div>
+                    <div class="status-divider"></div>
+                    <div class="status-details">
+                        <div>
+                            <span>People waiting</span>
+                            <strong id="departmentWaiting">2</strong>
+                        </div>
+                        <div>
+                            <span>Est. wait</span>
+                            <strong id="departmentWait">6 min</strong>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="queue-refresh">
+                <p id="lastUpdated">Sample queue information is displayed.</p>
+                <button type="button" class="refresh-button" id="refreshQueue">
+                    &#8635; Refresh Demo Status
+                </button>
+                <p class="refresh-note">
+                    Refresh changes sample values only. It does not retrieve real queue data.
+                </p>
+            </div>
+        </section>
+
+        <section class="section services-section" id="services">
+            <div class="section-heading">
+                <div class="eyebrow">CAMPUS SERVICES</div>
+                <h2>Services Made Simpler</h2>
+                <p>Choose the campus service you need and generate a token before visiting.</p>
+            </div>
+
+            <div class="service-grid">
+                <article class="service-item">
+                    <div class="service-symbol">C</div>
+                    <h3>College Office</h3>
+                    <p>For certificates, student records and general enquiries.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-symbol">L</div>
+                    <h3>Library</h3>
+                    <p>For library assistance and book-related enquiries.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-symbol">A</div>
+                    <h3>Accounts Section</h3>
+                    <p>For fee-related questions and account assistance.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-symbol">D</div>
+                    <h3>Department Office</h3>
+                    <p>For department-related requests and student support.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="how-it-works">
+            <div class="section-heading">
+                <div class="eyebrow">THREE SIMPLE STEPS</div>
+                <h2>How It Works</h2>
+                <p>Getting started is quick and easy.</p>
+            </div>
+
+            <div class="steps-grid">
+                <article class="step">
+                    <div class="step-number">1</div>
+                    <h3>Enter Your Details</h3>
+                    <p>Provide your name and select the campus service you need.</p>
+                </article>
+                <article class="step">
+                    <div class="step-number">2</div>
+                    <h3>Generate Your Token</h3>
+                    <p>Click the button to receive a demo queue token.</p>
+                </article>
+                <article class="step">
+                    <div class="step-number">3</div>
+                    <h3>Visit the Service Desk</h3>
+                    <p>Use the token as a demonstration of the proposed queue system.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section about-section" id="about">
+            <div class="section-heading">
+                <div class="eyebrow">MEET OUR TEAM</div>
+                <h2>About Our Team</h2>
+                <p>We are a team of three students working together to make campus services simpler and more organised.</p>
+            </div>
+
+            <div class="team-grid">
+                <article class="team-card">
+                    <div class="team-avatar">P</div>
+                    <h3>Priyanka B</h3>
+                    <p class="team-role">Frontend Developer</p>
+                    <p>Responsible for the website design, layout and user interface.</p>
+                </article>
+                <article class="team-card">
+                    <div class="team-avatar">P</div>
+                    <h3>Pravina K</h3>
+                    <p class="team-role">Java Backend Developer</p>
+                    <p>Responsible for backend development using Java.</p>
+                </article>
+                <article class="team-card">
+                    <div class="team-avatar">R</div>
+                    <h3>Rekha T</h3>
+                    <p class="team-role">Database Developer</p>
+                    <p>Responsible for database design and MySQL integration.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Digital Queue &copy; 2026 | <span>Smart Campus, Better Experience</span></p>
+        <p class="footer-team">Developed by Priyanka B, Pravina K and Rekha T</p>
+    </footer>
+</body>
+</html>
